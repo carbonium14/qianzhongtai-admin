@@ -1,0 +1,6 @@
+export const EMITS_UPDATE_MODELVALUE = 'update:modelValue'
+export const EMIT_SEARCH = 'search'
+export const EMIT_CLEAR = 'clear'
+export const EMIT_INPUT = 'input'
+export const EMIT_FOCUS = 'focus'
+export const EMIT_BLUR = 'blur'
