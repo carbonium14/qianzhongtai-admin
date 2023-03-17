@@ -5,13 +5,13 @@
       <li @click="onShowPopup" class="fixed top-[0.05rem] right-[-1px] h-4 px-1 flex items-center bg-white z-20 shadow-l-white">
         <SvgIcon name="hamburger" class="w-1.5 h-1.5"></SvgIcon>
       </li>
-      <li v-for="(item, index) in data" :key="item.id" :ref="setItemRef" @click="() => onItemClick(index)" 
+      <li v-for="(item, index) in $store.getters.categorys" :key="item.id" :ref="setItemRef" @click="() => onItemClick(index)" 
         class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4" :class="{'text-zinc-100': currentCategoryIndex === index}">
         {{ item.name }}
       </li>
     </ul>
     <Popup v-model="isVisible">
-      <Menu :categorys="data" @onItemClick="onItemClick"></Menu>
+      <Menu @onItemClick="onItemClick"></Menu>
     </Popup>
   </div>
 </template>
@@ -20,12 +20,6 @@
 import { ref, onBeforeUpdate, watch } from 'vue'
 import { useScroll } from '@vueuse/core'
 import Menu from '@/views/Main/components/menu/index.vue'
-defineProps({
-  data: {
-    type: Array,
-    required: true
-  }
-})
 const silderTarget = ref(null)
 const sliderStyle = ref({
   transform: 'translateX(0px)',
