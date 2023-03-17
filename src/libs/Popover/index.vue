@@ -4,7 +4,8 @@
       <slot name="reference"></slot>
     </div>
     <transition name="slide">
-      <div v-show="isVisible" class="absolute p-1 z-20 bg-white border rounded-md" ref="contentTarget" :style="contentStyle">
+      <div v-show="isVisible" class="absolute p-1 z-20 bg-white border rounded-md dark:bg-zinc-900 dark:border-zinc-700" 
+        ref="contentTarget" :style="contentStyle">
         <slot></slot>
       </div>  
     </transition>
