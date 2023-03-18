@@ -16,7 +16,6 @@
 </template>
 
 <script setup>
-import Popover from '@/libs/Popover/index.vue'
 import { THEME_LIGHT, THEME_DARK, THEME_SYSTEM } from '@/constants/index'
 import { useStore } from 'vuex'
 import { computed } from 'vue'

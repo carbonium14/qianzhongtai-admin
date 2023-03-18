@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <Mobile v-if="isMobileTerminal"></Mobile>
-    <PC v-else></PC>
-  </div>
+  <Mobile v-if="isMobileTerminal"></Mobile>
+  <PC v-else></PC>
 </template>
 
 <script setup>

@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import Search from '@/libs/Search/index.vue'
 import { ref } from 'vue'
 const inputValue = ref('')
 </script>
