@@ -10,6 +10,7 @@
 <script setup>
 import { computed } from 'vue'
 import { typeEnum, sizeEnum, EMITS_CLICK } from './constant'
+import SvgIcon from '../SvgIcon/index.vue'
 const props = defineProps({
   icon: {
     type: String

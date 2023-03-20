@@ -5,3 +5,16 @@ export const getPexelsList = (data) => {
     params: data
   })
 }
+export const getHint = (q) => {
+  return request({
+    url: '/pexels/hint',
+    params: {
+      q
+    }
+  })
+}
+export const getThemes = () => {
+  return request({
+    url: '/pexels/themes'
+  })
+}

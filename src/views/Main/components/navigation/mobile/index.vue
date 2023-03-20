@@ -8,8 +8,9 @@
         bg-white z-20 shadow-l-white dark:bg-zinc-900 dark:shadow-l-zinc">
         <SvgIcon name="hamburger" class="w-1.5 h-1.5"></SvgIcon>
       </li>
-      <li v-for="(item, index) in $store.getters.categorys" :key="item.id" :ref="setItemRef" @click="() => onItemClick(index)" 
-        class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4" :class="{'text-zinc-100': currentCategoryIndex === index}">
+      <li v-for="(item, index) in $store.getters.categorys" :key="item.id" :ref="setItemRef" @click="() => onItemClick(item)" 
+        class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4" :class="{'text-zinc-100':
+        $store.getters.currentCategoryIndex === index}">
         {{ item.name }}
       </li>
     </ul>
@@ -23,12 +24,13 @@
 import { ref, onBeforeUpdate, watch } from 'vue'
 import { useScroll } from '@vueuse/core'
 import Menu from '@/views/Main/components/menu/index.vue'
+import { useStore } from 'vuex'
+const store = useStore()
 const silderTarget = ref(null)
 const sliderStyle = ref({
   transform: 'translateX(0px)',
   width: '52px'
 })
-const currentCategoryIndex = ref(0)
 let itemRefs = []
 const setItemRef = (el) => {
   if (el) {
@@ -40,7 +42,7 @@ onBeforeUpdate(() => {
 })
 const ulTarget = ref(null)
 const { x: ulScrollLeft } = useScroll(ulTarget)
-watch(currentCategoryIndex, (val) => {
+watch(() => store.getters.currentCategoryIndex, (val) => {
   const { left, width } = itemRefs[val].getBoundingClientRect()
   const ulPadding = parseInt(getComputedStyle(ulTarget.value, null).padding.slice(0, -2))
   sliderStyle.value = {
@@ -52,8 +54,8 @@ watch(currentCategoryIndex, (val) => {
     ulTarget.value.scrollLeft = left + ulTarget.value.scrollLeft - ulPadding
   }
 })
-const onItemClick = (index) => {
-  currentCategoryIndex.value = index
+const onItemClick = (item) => {
+  store.commit('app/changeCurrentCategory', item)
 }
 const isVisible = ref(false)
 const onShowPopup = () => {

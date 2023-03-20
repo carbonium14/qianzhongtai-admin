@@ -6,10 +6,11 @@
         @click="trigger">
         <SvgIcon :name="isOpenCategory ? 'fold' : 'unfold'" class="w-1 h-1" fillClass="fill-zinc-900 dark:fill-zinc-300"></SvgIcon>
       </div>
-      <li v-for="(item, index) in $store.getters.categorys" :key="item.id" @click="() => onItemClick(index)"
+      <li v-for="(item, index) in $store.getters.categorys" :key="item.id" @click="() => onItemClick(item)"
         class="shrink-0 px-1.5 py-0 z-10 duration-200 text-zinc-900 text-base font-bold h-4 leading-4 cursor-pointer 
         hover:bg-zinc-200 rounded mr-1 mb-1 dark:text-zinc-500 dark:hover:text-zinc-300 dark:hover:bg-zinc-900"
-          :class="{ 'text-zinc-900 bg-zinc-200 dark:text-zinc-300 dark:bg-zinc-900': currentCategoryIndex === index }">
+          :class="{ 'text-zinc-900 bg-zinc-200 dark:text-zinc-300 dark:bg-zinc-900':
+          $store.getters.currentCategoryIndex === index }">
         {{ item.name }}
       </li>
     </ul>
@@ -18,13 +19,14 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
+const store = useStore()
 const isOpenCategory = ref(false)
 const trigger = () => {
   isOpenCategory.value = !isOpenCategory.value
 }
-const currentCategoryIndex = ref(0)
-const onItemClick = (index) => {
-  currentCategoryIndex.value = index
+const onItemClick = (item) => {
+  store.commit('app/changeCurrentCategory', item)
 }
 </script>
 

@@ -12,9 +12,11 @@
 
 <script setup>
 import { getPexelsList } from '@/api/pexels'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Item from './item.vue'
 import { isMobileTerminal } from '@/utils/flexible'
+import { useStore } from 'vuex'
+const store = useStore()
 let query = {
   page: 1,
   size: 20
@@ -40,6 +42,23 @@ const getPexelsData = async () => {
 }
 const loading = ref(false)
 const isFinished = ref(false)
+const resetQuery = (newQuery) => {
+  query = { ...query, ...newQuery }
+  isFinished.value = false
+  pexelsList.value = []
+}
+watch(() => store.getters.currentCategory, (currentCategory) => {
+  resetQuery({
+    page: 1,
+    categoryId: currentCategory.id
+  })
+})
+watch(() => store.getters.searchText, (val) => {
+  resetQuery({
+    page: 1,
+    searchText: val
+  })
+})
 </script>
 
 <style lang="scss" scoped>

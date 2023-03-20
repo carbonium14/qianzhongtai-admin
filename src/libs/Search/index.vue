@@ -2,7 +2,8 @@
   <div class="group relative p-0.5 rounded-xl border-white duration-500 hover:bg-red-100/40" ref="containerTarget">
     <div>
       <SvgIcon class="w-1.5 h-1.5 absolute translate-y-[-50%] top-[50%] left-2" name="search" color="#707070"></SvgIcon>
-      <input type="text" placeholder="搜索" v-model="inputValue" @keyup.enter="onSearchHandler" @focus="onFocusHandler" @blur="onBlurHandler"
+      <input type="text" placeholder="搜索" v-model="inputValue" @keyup.enter="onSearchHandler" @focus="onFocusHandler"
+        @blur="onBlurHandler" @click="onShowClick"
         class="block w-full h-[44px] pl-4 outline-0 bg-zinc-100 caret-zinc-400 rounded-xl text-zinc-900 tracking-wide
         text-sm font-semibold border border-zinc-100 focus:border-red-300 duration-500 group-hover:bg-white
         group-hover:border-zinc-100 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 dark:group-hover:bg-zinc-900
@@ -49,6 +50,7 @@ const onClearClick = () => {
 }
 const onSearchHandler = () => {
   emits(EMIT_SEARCH, inputValue.value)
+  isFocus.value = false
 }
 const isFocus = ref(false)
 const onFocusHandler = () => {
@@ -60,7 +62,11 @@ onClickOutside(containerTarget, () => {
   isFocus.value = false
 })
 const onBlurHandler = () => {
+  isFocus.value = false
   emits(EMIT_BLUR)
+}
+const onShowClick = () => {
+  isFocus.value = true
 }
 </script>
 

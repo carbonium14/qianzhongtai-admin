@@ -1,0 +1,1 @@
+export const EMITS_ITEM_CLICK = 'itemClick'

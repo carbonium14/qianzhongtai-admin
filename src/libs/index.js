@@ -1,4 +1,5 @@
 import { defineAsyncComponent } from 'vue'
+export { confirm } from './Confirm/index.js'
 export default {
   install(app) {
     const components = import.meta.glob('./*/index.vue')
