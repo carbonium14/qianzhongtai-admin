@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1">
-    <div class="relative w-full rounded cursor-zoom-in group" :style="{ backgroundColor: randomRGB() }">
+    <div class="relative w-full rounded cursor-zoom-in group" :style="{ backgroundColor: randomRGB() }" @click="onToPinsClick">
       <img v-lazy class="w-full rounded bg-transparent" :src="data.photo" alt="图片"
         :style="{ height: (width / data.photoWidth) * data.photoHeight + 'px'  }" ref="imgTarget">
       <div class="hidden opacity-0 w-full h-full bg-zinc-900/50 absolute top-0 left-0 rounded duration-300 
@@ -27,8 +27,8 @@
 import { randomRGB } from '@/utils/color'
 import { saveAs } from 'file-saver'
 import { message } from '@/libs'
-import { useFullscreen } from '@vueuse/core'
-import { ref } from 'vue'
+import { useFullscreen, useElementBounding } from '@vueuse/core'
+import { ref, computed } from 'vue'
 const props = defineProps({
   data: {
     type: Object,
@@ -38,6 +38,7 @@ const props = defineProps({
     type: Number
   }
 })
+const emits = defineEmits(['click'])
 const onDownload = () => {
   message('success', '图片开始下载')
   setTimeout(() => {
@@ -46,6 +47,19 @@ const onDownload = () => {
 }
 const imgTarget = ref(null)
 const { enter: onImgFullScreen } = useFullscreen(imgTarget)
+const { x: imgContainerX, y: imgContainerY, width: imgContainerWidth, height: imgContainerHeight } = useElementBounding(imgTarget)
+const imgContainerCenter = computed(() => {
+  return {
+    translateX: parseInt(imgContainerX.value + imgContainerWidth.value / 2),
+    translateY: parseInt(imgContainerY.value + imgContainerHeight.value / 2)
+  }
+})
+const onToPinsClick = () => {
+  emits('click', {
+    id: props.data.id,
+    location: imgContainerCenter.value
+  })
+}
 </script>
 
 <style lang="scss" scoped>
