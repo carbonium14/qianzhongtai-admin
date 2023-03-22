@@ -1,7 +1,7 @@
 <template>
   <Popover class="flex items-center" placement="bottom-left">
     <template #reference>
-      <div class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none 
+      <div class="guide-my relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none 
         hover:bg-zinc-100/60 dark:hover:bg-zinc-900">
         <img v-lazy class="w-3 h-3 rounded-sm" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651074011&t=ba5d64079381425813e4c269bcac1a1b" alt="图片">
         <SvgIcon class="h-1.5 w-1.5 ml-0.5" name="down-arrow" fillClass="fill-zinc-900"></SvgIcon>

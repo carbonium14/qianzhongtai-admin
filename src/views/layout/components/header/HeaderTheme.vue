@@ -2,7 +2,8 @@
   <Popover placement="bottom-left">
     <template #reference>
       <SvgIcon :name="svgIconName" fillClass="fill-zinc-900 dark:fill-zinc-300"
-        class="w-4 h-4 p-1 cursor-pointer rounded-sm duration-200 outline-none hover:bg-zinc-100/60 dark:hover:bg-zinc-900">
+        class="guide-theme w-4 h-4 p-1 cursor-pointer rounded-sm duration-200 outline-none hover:bg-zinc-100/60
+        dark:hover:bg-zinc-900">
       </SvgIcon>
     </template>
     <div class="w-[140px] overflow-hidden">
