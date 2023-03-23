@@ -62,6 +62,11 @@ watch(isVisible, (val) => {
     return
   }
   nextTick(() => {
+    if (contentTarget.value.children.length === 0) {
+      contentStyle.value = {}
+      contentStyle.value.display = 'none'
+      return
+    }
     switch (props.placement) {
       case PROP_TOP_LEFT:
         contentStyle.value.top = 0

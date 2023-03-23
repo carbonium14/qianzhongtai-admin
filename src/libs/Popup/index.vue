@@ -3,7 +3,7 @@
     <teleport to='body'>
       <transition name="fade">
         <div v-if="isVisible" class="w-screen h-screen bg-zinc-900/80 z-40 fixed top-0 left-0"
-        @click="isVisible = false"></div>
+        @click="() => isVisible = false"></div>
       </transition>
       <transition name="popup-down-up">
         <div v-if="isVisible" v-bind="$attrs" class="w-screen bg-white z-50 fixed bottom-0 dark:bg-zinc-800">
