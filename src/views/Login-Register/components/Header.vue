@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import img from '../../../../public/vite.svg'
+import img from '@/assets/vue.svg'
 </script>
 
 <style lang="scss" scoped>

@@ -25,3 +25,15 @@ export const registerUser = (data) => {
     data
   })
 }
+export const putProfile = (data) => {
+  return request({
+    url: '/user/profile',
+    method: 'PUT',
+    data
+  })
+}
+export const getSts = () => {
+  return request({
+    url: '/user/sts'
+  })
+}

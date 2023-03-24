@@ -57,6 +57,8 @@ const onItemClick = (item) => {
     confirm('提示', '确定要退出登录吗?').then(() => {
       store.dispatch('user/logout')
     })
+  } else if (item.id === 0) {
+    router.push(item.path)
   }
 }
 </script>

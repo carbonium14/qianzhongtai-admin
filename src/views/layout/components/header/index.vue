@@ -14,7 +14,7 @@ import HeaderSearch from './header-search/index.vue'
 import HeaderTheme from './HeaderTheme.vue'
 import HeaderMy from './HeaderMy.vue'
 import { useRouter } from 'vue-router'
-import img from '../../../../../public/vite.svg'
+import img from '@/assets/vue.svg'
 const router = useRouter()
 const onToHome = () => {
   router.push('/')
