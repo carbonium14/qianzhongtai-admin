@@ -41,7 +41,8 @@ onActivated(() => {
   containerTarget.value.scrollTop = containerTargetScrollY.value
 })
 const onVIPClick = () => {
-
+  store.commit('app/changeRouterType', 'push')
+  router.push('/member')
 }
 const onMyClick = () => {
   store.commit('app/changeRouterType', 'push')
