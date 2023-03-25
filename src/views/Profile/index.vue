@@ -56,12 +56,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'profile'
-}
-</script>
-
 <script setup>
 import { isMobileTerminal } from '@/utils/flexible'
 import { confirm } from '@/libs'
@@ -71,6 +65,9 @@ import { ref, watch } from 'vue'
 import { putProfile } from '@/api/sys'
 import { message } from '@/libs/index'
 import ChangeAvatar from './components/ChangeAvatar.vue'
+defineOptions({
+  name: 'Profile'
+})
 const store = useStore()
 const router = useRouter()
 const inputFileTarget = ref(null)
@@ -91,6 +88,7 @@ watch(isDialogVisible, (val) => {
   }
 })
 const onNavbarLeftClick = () => {
+  store.commit('app/changeRouterType', 'back')
   router.back()
 }
 const onLogoutClick = () => {

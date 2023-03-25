@@ -47,10 +47,14 @@ import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { LOGIN_TYPE_USERNAME } from '@/constants/index'
 import { message } from '@/libs'
+defineOptions({
+  name: 'Register'
+})
 const store = useStore()
 const router = useRouter()
 defineRule('validateConfirmPassword', validateConfirmPassword)
 const onToLogin = () => {
+  store.commit('app/changeRouterType', 'push')
   router.push('/login')
 }
 const loading = ref(false)

@@ -50,6 +50,7 @@ const menuArr = [
   }
 ]
 const onToLogin = () => {
+  store.commit('app/changeRouterType', 'push')
   router.push('/login')
 }
 const onItemClick = (item) => {
@@ -58,6 +59,7 @@ const onItemClick = (item) => {
       store.dispatch('user/logout')
     })
   } else if (item.id === 0) {
+    store.commit('app/changeRouterType', 'push')
     router.push(item.path)
   }
 }

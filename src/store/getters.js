@@ -1,3 +1,4 @@
+import { isMobileTerminal } from '@/utils/flexible'
 export default {
   categorys: (state) => state.category.categorys,
   themeType: (state) => state.theme.themeType,
@@ -8,5 +9,11 @@ export default {
   historys: (state) => state.search.historys,
   searchText: (state) => state.app.searchText,
   token: (state) => state.user.token,
-  userInfo: (state) => state.user.userInfo
+  userInfo: (state) => state.user.userInfo,
+  routerType: (state) => {
+    if (!isMobileTerminal.value) {
+      return 'none'
+    }
+    return state.app.routerType
+  }
 }

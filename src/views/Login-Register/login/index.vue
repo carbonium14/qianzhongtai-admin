@@ -40,6 +40,9 @@ import { useStore } from 'vuex'
 import { LOGIN_TYPE_USERNAME } from '@/constants/index'
 import { useRouter } from 'vue-router'
 import { message } from '@/libs'
+defineOptions({
+  name: 'Login'
+})
 const store = useStore()
 const router = useRouter()
 const isSliderCaptchaVisible = ref(false)
@@ -70,6 +73,7 @@ const onLogin = () => {
   router.push('/')
 }
 const onToReg = () => {
+  store.commit('app/changeRouterType', 'push')
   router.push('/register')
 }
 </script>

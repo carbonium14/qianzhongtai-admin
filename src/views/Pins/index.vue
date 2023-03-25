@@ -6,6 +6,9 @@
 
 <script setup>
 import Pins from './components/Pins.vue'
+defineOptions({
+  name: 'Pins'
+})
 </script>
 
 <style lang="scss" scoped>

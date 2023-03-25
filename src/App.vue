@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen w-screen fixed top-0 left-0">
-    <router-view></router-view>
+    <TransitionRouterView :routerType="$store.getters.routerType" mainComponentName="Home"></TransitionRouterView>
   </div>
 </template>
 
