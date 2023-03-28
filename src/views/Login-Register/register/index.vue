@@ -42,7 +42,7 @@
 import Header from '../components/header.vue'
 import { Form as VeeForm, Field as VeeField, ErrorMessage as VeeErrorMessage, defineRule } from 'vee-validate'
 import { validateUsername, validatePassword, validateConfirmPassword } from '../validate'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { LOGIN_TYPE_USERNAME } from '@/constants/index'
@@ -52,6 +52,7 @@ defineOptions({
 })
 const store = useStore()
 const router = useRouter()
+const route = useRoute()
 defineRule('validateConfirmPassword', validateConfirmPassword)
 const onToLogin = () => {
   store.commit('app/changeRouterType', 'push')
@@ -70,7 +71,10 @@ const onRegHandler = () => {
       username: regForm.value.username,
       password: regForm.value.password
     }
-    store.dispatch('user/register', payload)
+    store.dispatch('user/register', {
+      ...payload,
+      ...route.query
+    })
     store.dispatch('user/login', {
       ...payload,
       loginType: LOGIN_TYPE_USERNAME

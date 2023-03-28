@@ -37,3 +37,27 @@ export const getSts = () => {
     url: '/user/sts'
   })
 }
+export const getWXLoginData = () => {
+  return request({
+    url: '/sys/wxlogin/data'
+  })
+}
+export const getWXLoginToken = (appid, secret, code) => {
+  return request({
+    url: '/sys/wxlogin/access_token',
+    params: {
+      appid,
+      secret,
+      code
+    }
+  })
+}
+export const getWXLoginUserInfo = (accessToken, openid) => {
+  return request({
+    url: '/sys/wxlogin/userinfo',
+    params: {
+      accessToken,
+      openid
+    }
+  })
+}

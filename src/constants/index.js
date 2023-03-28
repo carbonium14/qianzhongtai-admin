@@ -22,3 +22,6 @@ export const THEME_SYSTEM = 'THEME_SYSTEM'
 export const LOGIN_TYPE_USERNAME = 'username'
 export const REGION = 'oss-cn-beijing'
 export const BUCKET = 'imooc-front'
+export const LOGIN_TYPE_OAUTH_NO_REGISTER_CODE = 204
+export const LOGIN_TYPE_QQ = 'QQ'
+export const LOGIN_TYPE_WX = 'WX'

@@ -1,6 +1,7 @@
 import md5 from 'md5'
 import { loginUser, getProfile, registerUser } from '@/api/sys'
 import { message } from '@/libs/index'
+import { LOGIN_TYPE_OAUTH_NO_REGISTER_CODE } from '@/constants/index'
 export default {
   namespaced: true,
   state: () => ({
@@ -22,6 +23,9 @@ export default {
         ...payload,
         password: password ? md5(password) : ''
       })
+      if (data.code === LOGIN_TYPE_OAUTH_NO_REGISTER_CODE) {
+        return data.code
+      }
       context.commit('setToken', data.token)
       context.dispatch('profile')
     },

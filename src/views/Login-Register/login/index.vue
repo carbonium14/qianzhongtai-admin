@@ -22,8 +22,8 @@
         <Button class="w-full dark:bg-zinc-900 xl:dark:bg-zinc-800" :isActiveAnim="false" :loading="loading">登录</Button>
       </VeeForm>
       <div class="flex justify-around mt-4">
-        <SvgIcon class="w-4 cursor-pointer" name="qq"></SvgIcon>
-        <SvgIcon class="w-4 cursor-pointer" name="wexin"></SvgIcon>
+        <QQLogin></QQLogin>
+        <WeixinLogin></WeixinLogin>
       </div>
       <SliderCaptcha v-if="isSliderCaptchaVisible" @close="() => isSliderCaptchaVisible = false" @success="onCaptchaSuccess"></SliderCaptcha>
     </div>
@@ -40,6 +40,8 @@ import { useStore } from 'vuex'
 import { LOGIN_TYPE_USERNAME } from '@/constants/index'
 import { useRouter } from 'vue-router'
 import { message } from '@/libs'
+import QQLogin from './QQLogin.vue'
+import WeixinLogin from './WeixinLogin.vue'
 defineOptions({
   name: 'Login'
 })
