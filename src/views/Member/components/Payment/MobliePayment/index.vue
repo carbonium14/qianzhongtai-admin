@@ -13,7 +13,7 @@
       <Button class="w-[120px]" :isActiveAnim="false" @click="onConfirmClick">立即开通</Button>
     </div>
     <Popup v-model="isOpenPopup" class="rounded">
-      <MobilePaySelect></MobilePaySelect>
+      <MobilePaySelect :pay-data="payData"></MobilePaySelect>
     </Popup>
   </div>
 </template>
@@ -22,6 +22,11 @@
 import Discounts from '../Discounts.vue'
 import { ref } from 'vue'
 import MobilePaySelect from './MobilePaySelect.vue'
+defineProps({
+  payData: {
+    type: Object
+  }
+})
 const isOpenPopup = ref(false)
 const onConfirmClick = () => {
   isOpenPopup.value = !isOpenPopup.value

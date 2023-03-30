@@ -9,7 +9,7 @@
       </p>
       <div class="flex mt-3">
         <div class="border border-zinc-200 dark:border-zinc-600 rounded-sm w-[220px] h-[60px] flex items-center pl-2
-          cursor-pointer duration-200 hover:bg-zinc-50 hover:dark:bg-zinc-800">
+          cursor-pointer duration-200 hover:bg-zinc-50 hover:dark:bg-zinc-800" @click="onAliPayClick">
           <img class="w-4 h-4" :src="Alipay" alt="图片" />
           <p class="text-xl ml-1 text-zinc-800 dark:text-zinc-200">支付宝</p>
         </div>
@@ -21,6 +21,16 @@
 <script setup>
 import Discounts from '../Discounts.vue'
 import Alipay from '@/assets/images/alipay.png'
+import { alipay } from '@/utils/pay'
+const props = defineProps({
+  payData: {
+    required: true,
+    type: Object
+  }
+})
+const onAliPayClick = () => {
+  alipay(props.payData.title, props.payData.desc)
+}
 </script>
 
 <style lang="scss" scoped>

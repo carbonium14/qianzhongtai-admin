@@ -13,7 +13,7 @@
           </PayMenuItem>
         </div>
         <p class="mt-1 text-sm text-zinc-500">{{ currentPayData.desc }}</p>
-        <Payment class="mt-4"></Payment>
+        <Payment class="mt-4" :payData="currentPayData"></Payment>
       </div>
     </div>
   </div>
