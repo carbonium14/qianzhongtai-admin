@@ -12,7 +12,7 @@
         </div>
       </template>
       <div class="w-[140px] overflow-hidden">
-        <div class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800">
+        <div class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800" @click="onToFeedback">
           <SvgIcon name="feedback" class="w-1.5 h-1.5 mr-1" fillClass="fill-zinc-900 dark:fill-zinc-300"></SvgIcon>
           <span class="text-zinc-800 dark:text-zinc-300 text-sm">立即吐槽</span>
         </div>
@@ -27,6 +27,7 @@ import Driver from 'driver.js'
 import 'driver.js/dist/driver.min.css'
 import { onMounted } from 'vue'
 import steps from './steps'
+import { FEEDBACK_URL } from '@/constants/index'
 let driver = null
 onMounted(() => {
   driver = new Driver({
@@ -40,6 +41,9 @@ onMounted(() => {
 const onGuideClick = () => {
   driver.defineSteps(steps)
   driver.start()
+}
+const onToFeedback = () => {
+  window.open(FEEDBACK_URL, '_blank')
 }
 </script>
 
