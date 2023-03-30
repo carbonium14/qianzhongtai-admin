@@ -26,3 +26,5 @@ export const LOGIN_TYPE_OAUTH_NO_REGISTER_CODE = 204
 export const LOGIN_TYPE_QQ = 'QQ'
 export const LOGIN_TYPE_WX = 'WX'
 export const FEEDBACK_URL = 'https://support.qq.com/product/383681'
+export const WEI_BO_APP_KEY = '3454329089'
+export const WEI_BO_UID = '5863409757'
